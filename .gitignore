@@ -1,0 +1,7 @@
+.idea
+.DS_Store
+*.lock
+cookbooks
+.vagrant
+tmp/
+_ide_helper.php
