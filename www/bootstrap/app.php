@@ -59,7 +59,7 @@ $app->singleton(
 //      'Illuminate\Session\Middleware\StartSession',
 //     // 'Illuminate\View\Middleware\ShareErrorsFromSession',
 //     // 'Laravel\Lumen\Http\Middleware\VerifyCsrfToken',
-        'App\AlexaApp\Middleware\StartEchoSession',
+//        'App\AlexaApp\Middleware\StartEchoSession',
         'App\AlexaApp\Middleware\SetupAlexaRequest'
  ]);
 

@@ -17,12 +17,26 @@ class StartEchoSession extends StartSession {
     {
         $session = $this->manager->driver();
 
-        $sessionId = array_get( json_decode( $request->getContent(), true ), 'session.sessionId' );
+        //todo: remove this after testing
+//        $content = $request->getContent();
+        $content = $request->input('content');
+
+        $sessionId = array_get( json_decode($content, true ), 'session.sessionId' );
+
+//        $sessionId = str_replace('.', '', $sessionId);
+//        $sessionId = str_replace('amzn1echo-apisession', '', $sessionId);
+//        $sessionId = str_replace('-', '', $sessionId);
+//
+//        $strleng = strlen($sessionId);
+
+        $sessionId = 'abcd123';
+
 
         $session->setId($sessionId);
 //        $session->setId($request->cookies->get($session->getName()));
 
         return $session;
+
     }
 
 }

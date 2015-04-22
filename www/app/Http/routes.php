@@ -1,5 +1,11 @@
 <?php
 
+use App\AlexaApp\Request\AlexaRequest;
+use App\AlexaApp\Response\AlexaResponse;
+use App\AlexaApp\Response\Card;
+use App\AlexaApp\Response\Speech;
+use App\AlexaApp\Request\IntentRequest;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,9 +18,17 @@
 */
 
 $app->get('/', function() use ($app) {
+    return '<html>
+    <head></head>
+    <body>
+    <form action="/test" method="post">
+    <textarea name="content"></textarea>
+    <input type="submit" />
+    </form>
+    </body>
+    </html>';
 
-    var_dump($app->make('blah'));
-
+//
     $request = '{
   "version": "1.0",
   "session": {
@@ -45,14 +59,43 @@ $app->get('/', function() use ($app) {
     }
   }
 }';
+//
+//    $stuff = json_decode($request, true);
+//
+//
+//
+////    return var_dump($stuff);
+//
+//    return array_get($stuff, 'session.sessionId');
 
-    $stuff = json_decode($request, true);
-
-//    return var_dump($stuff);
-
-    return array_get($stuff, 'session.sessionId');
+    return $app->welcome();
 });
 
-$app->post('/', function() use ($app) {
+$app->post('/', function(\App\AlexaApp\Request\AlexaRequest $request) use ($app) {
 
+
+
+});
+
+$app->post('/test', function() use ($app){
+
+    /** @var AlexaRequest $alexaRequest */
+    $alexaRequest = $app->make(AlexaRequest::class);
+
+    if($alexaRequest->getRequestType() == "LaunchRequest"){
+        return new AlexaResponse(new Speech("Hello! What can I help you with?"));
+    }
+    else if($alexaRequest->getRequestType() == "SessionEndRequest"){
+        return new \Illuminate\Http\Response();
+    }
+    else if($alexaRequest->getRequestType() == "IntentRequest"){
+        /** @var IntentRequest $intentRequest */
+        $intentRequest = $app->make(IntentRequest::class);
+
+        
+        if($intentRequest == "GetAntiJoke")
+            return new AlexaResponse();
+
+
+    }
 });

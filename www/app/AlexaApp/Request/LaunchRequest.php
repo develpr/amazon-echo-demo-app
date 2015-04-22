@@ -1,6 +1,10 @@
 <?php  namespace App\AlexaApp\Request; 
 
-class LaunchRequest extends AlexaRequest
+class LaunchRequest extends BaseAlexaRequest
 {
+    protected function setupRequest(array $data)
+    {
+
+    }
 
 } 

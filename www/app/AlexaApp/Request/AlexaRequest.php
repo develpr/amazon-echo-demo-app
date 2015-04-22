@@ -1,12 +1,13 @@
 <?php  namespace App\AlexaApp\Request; 
 
-use Illuminate\Http\Request;
-
-abstract class AlexaRequest
+interface AlexaRequest
 {
-    function __construct(Request $request)
-    {
 
-    }
+    /**
+     * returns the request type, i.e. IntentRequest
+     *
+     * @return mixed
+     */
+    public function getRequestType();
 
 } 
