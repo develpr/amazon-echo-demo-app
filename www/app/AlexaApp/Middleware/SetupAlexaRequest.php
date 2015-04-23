@@ -30,8 +30,9 @@ class SetupAlexaRequest implements Middleware
     {
         $this->app->bind(AlexaRequest::class, function() use ($request) {
 
-//            $requestType = array_get(json_decode($request->getContent(), true), 'request.type');
+            $requestType = array_get(json_decode($request->getContent(), true), 'request.type');
 
+			if($requestType == null)
 //            todo: remove this, it's just for testing
             $requestType = array_get(json_decode($request->input('content'), true), 'request.type');
 

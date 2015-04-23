@@ -28,9 +28,13 @@ abstract class BaseAlexaRequest implements AlexaRequest
     private function extractRequestData($request)
     {
         //todo: remove this after testing
-        return json_decode($request->input('content'), true);
+		$data = json_decode($request->getContent(), true);
 
-        return $request->getContent();
+		if($data == null)
+			$data = json_decode($request->input('content'), true);
+
+
+        return $data;
     }
 
     /**
