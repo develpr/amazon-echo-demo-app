@@ -1,6 +1,5 @@
 {
     "intents": [
-
         {
             "intent" : "GetAntiJoke",
             "slots": [
