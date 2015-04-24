@@ -18,8 +18,9 @@ class StartEchoSession extends StartSession {
         $session = $this->manager->driver();
 
         //todo: remove this after testing
-//        $content = $request->getContent();
-        $content = $request->input('content');
+        $content = $request->getContent();
+
+		$content = $request->input('content');
 
         $sessionId = array_get( json_decode($content, true ), 'session.sessionId' );
 
