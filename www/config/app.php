@@ -54,4 +54,6 @@ return [
 
     'cipher' => MCRYPT_RIJNDAEL_128,
 
+    'alexa_path' => '/'
+
 ];

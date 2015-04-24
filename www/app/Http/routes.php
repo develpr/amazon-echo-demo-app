@@ -17,12 +17,19 @@ use App\AlexaApp\Request\IntentRequest;
 |
 */
 
+$app->intent('/test', 'GetAntiJoke', function() use ($app) {
+
+    dd("HI");
+
+});
+
+
 $app->get('/', function() use ($app) {
     return '<html>
     <head></head>
     <body>
     <form action="/test" method="post">
-    <textarea name="content"></textarea>
+    <textarea style="width:400px; height:600px;" name="content"></textarea>
     <input type="submit" />
     </form>
     </body>
@@ -75,7 +82,10 @@ $app->post('/', function(\App\AlexaApp\Request\AlexaRequest $request) use ($app)
 
 
 
+
 });
+
+
 
 $app->post('/test', function() use ($app){
 

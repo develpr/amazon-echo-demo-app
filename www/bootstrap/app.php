@@ -15,7 +15,8 @@ require_once __DIR__.'/../vendor/autoload.php';
 |
 */
 
-$app = new Laravel\Lumen\Application;
+//$app = new Laravel\Lumen\Application;
+$app = new App\AlexaApp\AlexaApplication;
 
  $app->withFacades();
 
@@ -78,7 +79,7 @@ $app->singleton(
 |
 */
 
-// $app->register('App\Providers\AppServiceProvider');
+ $app->register('App\Providers\AppServiceProvider');
 
 /*
 |--------------------------------------------------------------------------
