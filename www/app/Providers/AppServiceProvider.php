@@ -14,12 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $test = "HI";
     }
 
     public function boot()
     {
-
-        $test = "HI";
     }
 }

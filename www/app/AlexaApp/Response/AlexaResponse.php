@@ -97,6 +97,7 @@ class AlexaResponse implements Jsonable
         if( ! is_null($this->speech) && $this->speech instanceof Speech )
             $response['outputSpeech'] = $this->speech->toArray();
 
+        $response['sessionAttributes'] = $this->getSessionData();
 
         $responseData['response'] = $response;
 
@@ -132,6 +133,12 @@ class AlexaResponse implements Jsonable
         return $this;
     }
 
+    private function getSessionData()
+    {
+        $data = \Session::all();
+
+        return $data;
+    }
 
 
 

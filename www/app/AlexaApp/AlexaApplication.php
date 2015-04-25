@@ -71,14 +71,21 @@ class AlexaApplication extends Application
         $request = $this->make('request');
 
 
-        $data = $request->getContent();
+        $data = json_decode($request->getContent());
+
+        if(! $data )
+            $data = json_decode($request->input('content'), true);
 
         switch(array_get($data, 'request.type')){
             case 'SessionEndRequest':
                 return '**' . "SESSION_END_REQUEST";
+            case 'LaunchRequest':
+                return '**' . "LAUNCH_REQUEST";
+            case 'IntentRequest':
+                return '*' . ltrim(array_get($data, 'request.intent.name'));
         }
 
-        return '*' . ltrim('GetAntiJoke');
+
     }
 
 
