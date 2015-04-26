@@ -1,11 +1,5 @@
 <?php
 
-use App\AlexaApp\Request\AlexaRequest;
-use App\AlexaApp\Response\AlexaResponse;
-use App\AlexaApp\Response\Card;
-use App\AlexaApp\Response\Speech;
-use App\AlexaApp\Request\IntentRequest;
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -17,11 +11,10 @@ use App\AlexaApp\Request\IntentRequest;
 |
 */
 
-$app->intent('/test', 'GetAntiJoke', function() use ($app) {
 
-    dd("HI");
+$app->intent('/family', 'TellAboutMember', 'App\Http\Controllers\FamilyController@tellAboutMember');
 
-});
+$app->intent('/chooser', 'ChooseBetweenX', 'App\Http\Controllers\ChooseController@chooseBetweenX');
 
 
 $app->get('/', function() use ($app) {
@@ -108,64 +101,4 @@ $app->get('/', function() use ($app) {
 
     return $app->welcome();
 });
-
-$app->post('/', function() use ($app) {
-
-	/** @var AlexaRequest $alexaRequest */
-	$alexaRequest = $app->make(AlexaRequest::class);
-
-	if($alexaRequest->getRequestType() == "LaunchRequest"){
-		return new AlexaResponse(new Speech("Hello! What can I help you with?"));
-	}
-	else if($alexaRequest->getRequestType() == "SessionEndRequest"){
-		return new \Illuminate\Http\Response();
-	}
-	else if($alexaRequest->getRequestType() == "IntentRequest"){
-		/** @var IntentRequest $intentRequest */
-		$intentRequest = $app->make(IntentRequest::class);
-
-
-		if($intentRequest->getIntent() == "GetAntiJoke"){
-			$result = DB::select('select joke from anti_jokes order by rand() limit 1')[0];
-			$response = new AlexaResponse(new Speech($result->joke));
-			$response->endSession();
-			return $response;
-		}
-
-
-	}
-
-
-});
-
-
-
-//$app->post('/test', function() use ($app){
-//
-//    /** @var AlexaRequest $alexaRequest */
-//    $alexaRequest = $app->make(AlexaRequest::class);
-//
-//    if($alexaRequest->getRequestType() == "LaunchRequest"){
-//        return new AlexaResponse(new Speech("Hello! What can I help you with?"));
-//    }
-//    else if($alexaRequest->getRequestType() == "SessionEndRequest"){
-//        return new \Illuminate\Http\Response();
-//    }
-//    else if($alexaRequest->getRequestType() == "IntentRequest"){
-//        /** @var IntentRequest $intentRequest */
-//        $intentRequest = $app->make(IntentRequest::class);
-//
-//
-//        if($intentRequest->getIntent() == "GetAntiJoke"){
-//			$result = DB::select('select joke from anti_jokes order by rand() limit 1')[0];
-//			$response = new AlexaResponse(new Speech($result->joke));
-//			$response->endSession();
-//			return $response;
-//		}
-//
-//
-//    }
-//});
-
-$app->intent('/test', 'GetAntiJoke', 'App\Http\Controllers\Controller@showProfile');
 

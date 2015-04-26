@@ -1,0 +1,29 @@
+ChooseBetweenX choose between {one | Options}
+ChooseBetweenX choose between {one two | Options}
+ChooseBetweenX choose between {one and two | Options}
+ChooseBetweenX choose between {one two three | Options}
+ChooseBetweenX choose between {one two and three | Options}
+ChooseBetweenX choose between {one two three four | Options}
+ChooseBetweenX choose between {one two three and four | Options}
+ChooseBetweenX choose between {one two three four five | Options}
+ChooseBetweenX choose between {one two three four and five | Options}
+ChooseBetweenX pick between {one | Options}
+ChooseBetweenX pick between {one two | Options}
+ChooseBetweenX pick between {one and two | Options}
+ChooseBetweenX pick between {one two three | Options}
+ChooseBetweenX pick between {one two and three | Options}
+ChooseBetweenX pick between {one two three four | Options}
+ChooseBetweenX pick between {one two three and four | Options}
+ChooseBetweenX pick between {one two three four five | Options}
+ChooseBetweenX pick between {one two three four and five | Options}
+ChooseBetweenX decide between {one | Options}
+ChooseBetweenX decide between {one two | Options}
+ChooseBetweenX decide between {one and two | Options}
+ChooseBetweenX decide between {one two three | Options}
+ChooseBetweenX decide between {one two and three | Options}
+ChooseBetweenX decide between {one two three four | Options}
+ChooseBetweenX decide between {one two three and four | Options}
+ChooseBetweenX decide between {one two three four five | Options}
+ChooseBetweenX decide between {one two three four and five | Options}
+
+

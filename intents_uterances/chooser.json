@@ -1,0 +1,13 @@
+{
+    "intents": [
+        {
+            "intent" : "ChooseBetweenX",
+            "slots": [
+                {
+                    "name" : "Options",
+                    "type" : "LITERAL"
+                }
+            ]
+        }
+    ]
+}
