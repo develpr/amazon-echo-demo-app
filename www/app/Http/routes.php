@@ -18,11 +18,11 @@ $app->launchRequest('/chooser', 'App\Http\Controllers\ChooseController@launch');
 $app->intent('/chooser', 'ChooseBetweenX', 'App\Http\Controllers\ChooseController@chooseBetweenX');
 
 
-$app->get('/chooser', function() use ($app) {
+$app->get('/', function() use ($app) {
     return '<html>
     <head></head>
     <body>
-    <form action="/test" method="post">
+    <form action="/chooser" method="post">
     <textarea style="width:400px; height:600px;" name="content"></textarea>
     <input type="submit" />
     </form>
