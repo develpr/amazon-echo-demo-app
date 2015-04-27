@@ -14,8 +14,8 @@
 
 $app->intent('/family', 'TellAboutMember', 'App\Http\Controllers\FamilyController@tellAboutMember');
 
-$app->launchRequest('/chooser', 'App\Http\Controllers\ChooseController@launch');
-$app->intent('/chooser', 'ChooseBetweenX', 'App\Http\Controllers\ChooseController@chooseBetweenX');
+$app->launchRequest('/chooser', 'App\Http\Controllers\ChooserController@launch');
+$app->intent('/chooser', 'ChooseBetweenX', 'App\Http\Controllers\ChooserController@chooseBetweenX');
 
 
 $app->get('/', function() use ($app) {
