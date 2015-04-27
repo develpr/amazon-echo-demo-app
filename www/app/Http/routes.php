@@ -14,10 +14,11 @@
 
 $app->intent('/family', 'TellAboutMember', 'App\Http\Controllers\FamilyController@tellAboutMember');
 
+$app->launchRequest('/chooser', 'App\Http\Controllers\ChooseController@launch');
 $app->intent('/chooser', 'ChooseBetweenX', 'App\Http\Controllers\ChooseController@chooseBetweenX');
 
 
-$app->get('/', function() use ($app) {
+$app->get('/chooser', function() use ($app) {
     return '<html>
     <head></head>
     <body>
@@ -29,34 +30,20 @@ $app->get('/', function() use ($app) {
     </html>';
 
 //
+	//launch
     $request = '{
   "version": "1.0",
   "session": {
-    "new": false,
+    "new": true,
     "sessionId": "amzn1.echo-api.session.abeee1a7-aee0-41e6-8192-e6faaed9f5ef",
-    "attributes": {
-      "supportedHoroscopePeriods": {
-        "daily": true,
-        "weekly": false,
-        "monthly": false
-      }
-    },
+    "attributes": {},
     "user": {
       "userId": "amzn1.account.AM3B227HF3FAM1B261HK7FFM3A2"
     }
   },
   "request": {
-    "type": "IntentRequest",
-    "requestId": " amzn1.echo-api.request.6919844a-733e-4e89-893a-fdcb77e2ef0d",
-    "intent": {
-      "name": "GetZodiacHoroscopeIntent",
-      "slots": {
-        "ZodiacSign": {
-          "name": "ZodiacSign",
-          "value": "virgo"
-        }
-      }
-    }
+    "type": "LaunchRequest",
+    "requestId": "amzn1.echo-api.request.9cdaa4db-f20e-4c58-8d01-c75322d6c423"
   }
 }';
 
