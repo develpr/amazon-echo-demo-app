@@ -2,7 +2,7 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
- Dotenv::load(__DIR__.'/../');
+// Dotenv::load(__DIR__.'/../');
 
 /*
 |--------------------------------------------------------------------------
@@ -10,15 +10,16 @@ require_once __DIR__.'/../vendor/autoload.php';
 |--------------------------------------------------------------------------
 |
 | Here we will load the environment and create the application instance
-| that servers as the central piece of the framework. We'll use this
+| that serves as the central piece of this framework. We'll use this
 | application as an "IoC" container and router for this framework.
 |
 */
 
-//$app = new Laravel\Lumen\Application;
-$app = new Develpr\AlexaApp\AlexaApplication;
+$app = new Laravel\Lumen\Application(
+	realpath(__DIR__.'/../')
+);
 
- $app->withFacades();
+// $app->withFacades();
 
 // $app->withEloquent();
 
@@ -54,14 +55,13 @@ $app->singleton(
 |
 */
 
- $app->middleware([
+// $app->middleware([
 //     // 'Illuminate\Cookie\Middleware\EncryptCookies',
 //     // 'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
-//      'Illuminate\Session\Middleware\StartSession',
+//     // 'Illuminate\Session\Middleware\StartSession',
 //     // 'Illuminate\View\Middleware\ShareErrorsFromSession',
 //     // 'Laravel\Lumen\Http\Middleware\VerifyCsrfToken',
-        'Develpr\AlexaApp\Middleware\SetupAlexaRequest'
- ]);
+// ]);
 
 // $app->routeMiddleware([
 
@@ -78,7 +78,7 @@ $app->singleton(
 |
 */
 
- $app->register(\Develpr\AlexaApp\AlexaProvider::class);
+// $app->register('App\Providers\AppServiceProvider');
 
 /*
 |--------------------------------------------------------------------------

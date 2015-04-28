@@ -1,5 +1,3 @@
 /lumen.log
 /vendor
 .env
-
-tests/_output/*
