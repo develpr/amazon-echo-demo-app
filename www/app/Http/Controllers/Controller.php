@@ -34,7 +34,7 @@ class Controller extends BaseController
 
 		$words = "You can choose from ";
 
-		$words .= implode(", ", $this->meals);
+		$words .= implode(", ", array_keys($this->meals));
 
 		return new AlexaResponse(new Speech($words));
 
@@ -51,5 +51,10 @@ class Controller extends BaseController
 
 		return new AlexaResponse(new Speech($words));
 
+	}
+
+	public function endSession()
+	{
+		return (new AlexaResponse())->endSession();
 	}
 }
