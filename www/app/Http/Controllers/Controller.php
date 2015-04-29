@@ -30,8 +30,6 @@ class Controller extends BaseController
 
 	public function listMeals()
 	{
-		$alexaResponse = new AlexaResponse();
-
 		$words = "You can choose from ";
 
 		$words .= implode(", ", array_keys($this->meals));
@@ -44,7 +42,8 @@ class Controller extends BaseController
 	{
 		$choice = $intentRequest->token('Meal');
 
-		$words = array_rand(["Interesting choice... ", "Very good choice! "]);
+		$responses = ["Interesting choice... ", "Very good choice! "];
+		$words = $responses[array_rand($responses)];
 
 		if($choice && in_array(strtolower($choice), array_keys($this->meals)))
 			$words .= $this->meals[$choice];
