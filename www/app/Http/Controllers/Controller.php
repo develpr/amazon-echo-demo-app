@@ -48,7 +48,7 @@ class Controller extends BaseController
 		if($choice && in_array(strtolower($choice), array_keys($this->meals)))
 			$words .= $this->meals[$choice];
 
-		return new AlexaResponse(new Speech($words));
+		return ((new AlexaResponse(new Speech($words)))->endSession());
 
 	}
 
