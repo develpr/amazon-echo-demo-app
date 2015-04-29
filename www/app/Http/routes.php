@@ -15,10 +15,10 @@ $app->get('/', function() use($app) {
 	return $app->welcome();
 });
 
-$app->launchRequest('/demo', 'App\Http\Controllers\Controller@launchRequest');
+$app->launch('/demo', 'App\Http\Controllers\Controller@launchRequest');
 
 $app->intent('/demo', "ListMeals", 'App\Http\Controllers\Controller@listMeals');
 
 $app->intent('/demo', "ChooseMeal", 'App\Http\Controllers\Controller@chooseMeal');
 
-$app->sessionEnd('/demo', 'App\Http\Controllers\Controller@endSession');
+$app->sessionEnded('/demo', 'App\Http\Controllers\Controller@sessionEnded');

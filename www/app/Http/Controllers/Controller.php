@@ -52,7 +52,7 @@ class Controller extends BaseController
 
 	}
 
-	public function endSession()
+	public function sessionEnded()
 	{
 		return (new AlexaResponse())->endSession();
 	}
