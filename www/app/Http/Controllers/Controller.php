@@ -7,6 +7,12 @@ use Laravel\Lumen\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
+	private $meals = [
+		"pizza",
+		"sashimi",
+		"ramen",
+		"garbage"
+	];
     public function launchRequest()
 	{
 		$alexaResponse = new AlexaResponse();
@@ -16,6 +22,15 @@ class Controller extends BaseController
 		$alexaResponse->setSpeech($speech)->setCard($card);;
 
 		return $alexaResponse;
+	}
 
+	public function listMeals()
+	{
+		$words = "You can chose from ";
+
+		$words .= implode(", ", array_keys($this->meals));
+
+		return new AlexaResponse(new Speech($words));
+		
 	}
 }
