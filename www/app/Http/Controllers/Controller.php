@@ -11,8 +11,8 @@ use Laravel\Lumen\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
 	private $meals = [
-		"pizza" => "Really good choice, both delicious and healthy!",
-		"sashimi" => "That will be expensive but very good.",
+		"pizza" => "Pizza is a really good option, both delicious and healthy!",
+		"sashimi" => "Sashimi will be expensive but very good.",
 		"ramen" => "I'd go with a pork forward tonkotsu ramen."
 	];
     public function launchRequest()
