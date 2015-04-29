@@ -11,16 +11,16 @@ use Laravel\Lumen\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
 	private $meals = [
-		"pizza",
-		"sashimi",
-		"ramen",
-		"garbage"
+		"pizza" => "Really good choice, both delicious and healthy!",
+		"sashimi" => "That will be expensive but very good.",
+		"ramen" => "I'd go with a pork forward tonkotsu ramen."
 	];
-    public function launchRequest(Request $request)
+    public function launchRequest()
 	{
-		\Log::info($request->getContent());
 		$alexaResponse = new AlexaResponse();
+
 		$speech = new Speech('Welcome to the meal planning app');
+
 		$card = new Card("Thank You - Meal App", "", "Thanks for using the meal app!");
 
 		$alexaResponse->setSpeech($speech)->setCard($card);;
@@ -28,11 +28,10 @@ class Controller extends BaseController
 		return $alexaResponse;
 	}
 
-	public function listMeals(Request $request)
+	public function listMeals()
 	{
-		\Log::info($request->getContent());
 		$alexaResponse = new AlexaResponse();
-		
+
 		$words = "You can choose from ";
 
 		$words .= implode(", ", $this->meals);
@@ -43,6 +42,14 @@ class Controller extends BaseController
 
 	public function chooseMeal(IntentRequest $intentRequest)
 	{
+		$choice = $intentRequest->token('Meal');
+
+		$words = array_rand(["Interesting choice... ", "Very good choice! "]);
+
+		if($choice && in_array(strtolower($choice), array_keys($this->meals)))
+			$words .= $this->meals[$choice];
+
+		return new AlexaResponse(new Speech($words));
 
 	}
 }
