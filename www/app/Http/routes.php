@@ -15,4 +15,4 @@ $app->get('/', function() use ($app) {
     return $app->welcome();
 });
 
-$app->launch('/demo', 'App\Http\Controllers\Controller@launchRequest');
+$app->launch('/demo', 'App\Http\Controllers\Controller@launch');

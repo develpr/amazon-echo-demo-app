@@ -19,7 +19,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 //	realpath(__DIR__.'/../')
 //);
 
-$app = new Develpr\AlexaApp\AlexaApplication(
+$app = new \Develpr\AlexaApp\AlexaApplication(
 	realpath(__DIR__.'/../')
 );
 
