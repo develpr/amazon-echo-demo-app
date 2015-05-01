@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use Develpr\AlexaApp\Request\IntentRequest;
 use Develpr\AlexaApp\Response\AlexaResponse;
 use Develpr\AlexaApp\Response\Card;
 use Develpr\AlexaApp\Response\Speech;
@@ -26,5 +27,24 @@ class Controller extends BaseController
 		$alexaResponse->setSpeech($speech)->setCard($card);
 
 		return $alexaResponse;
+	}
+
+	public function chooseMeal(IntentRequest $intentRequest)
+	{
+		$choice = strtolower($intentRequest->slot('Meal'));
+
+		$alexaResponse = new AlexaResponse;
+
+		$wordsToSpeak = "Great choice! ";
+
+		if($choice && array_key_exists($choice, $this->meals))
+			$wordsToSpeak .= $this->meals[$choice];
+
+		$speech = new Speech($wordsToSpeak);
+
+		$alexaResponse->setSpeech($speech)->endSession();
+
+		return $alexaResponse;
+
 	}
 }
