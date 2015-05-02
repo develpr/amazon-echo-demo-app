@@ -31,7 +31,13 @@ class Controller extends BaseController
 
 	public function chooseMeal(IntentRequest $intentRequest)
 	{
+
+
+		$previousMeal = \Session::get('previousMeal');
+
 		$choice = strtolower($intentRequest->slot('Meal'));
+
+		\Session::put('previousMeal', $choice);
 
 		$alexaResponse = new AlexaResponse;
 
