@@ -51,7 +51,7 @@ class Controller extends BaseController
 
 		\Session::put('previousMeal', $choice);
 
-		$alexaResponse->setSpeech($speech)->endSession();
+		$alexaResponse->setSpeech($speech);
 
 		return $alexaResponse;
 
