@@ -19,3 +19,5 @@ $app->get('/', function() use ($app) {
 $app->launch('/demo', 'App\Http\Controllers\Controller@launch');
 
 $app->intent('/demo', 'ChooseMeal', 'App\Http\Controllers\Controller@chooseMeal');
+
+$app->sessionEnded('/demo', 'App\Http\Controllers\Controller@end');
